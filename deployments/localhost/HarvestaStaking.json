@@ -1,0 +1,119 @@
+{
+  "address": "0x90c84237fDdf091b1E63f369AF122EB46000bc70",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_borrowerOperations",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_hintHelpers",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "HarvestaStaking__NotEnoughEther",
+      "type": "error"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "fallback"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_asset",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_collEther",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amountDebt",
+          "type": "uint256"
+        }
+      ],
+      "name": "openTrove",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_asset",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_collEther",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amountDebt",
+          "type": "uint256"
+        }
+      ],
+      "name": "openTroveWithHint",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "receive"
+    }
+  ],
+  "transactionHash": "0x709f036473535f07849b9844cba62cbc914ba8b8a004aaf6594917402496e1e5",
+  "receipt": {
+    "to": null,
+    "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "contractAddress": "0x90c84237fDdf091b1E63f369AF122EB46000bc70",
+    "transactionIndex": 0,
+    "gasUsed": "236094",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x8721a4cf7315943a5b469d0717511b77f9137d522c0676d2e700071303328185",
+    "transactionHash": "0x709f036473535f07849b9844cba62cbc914ba8b8a004aaf6594917402496e1e5",
+    "logs": [],
+    "blockNumber": 15982497,
+    "cumulativeGasUsed": "236094",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0x9eB2Ce1be2DD6947e4f5Aabe33106f48861DFD74",
+    "0x17244338034Bea1fA940779Bc769Ff01833406c4"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "71c5ed0394d39a33228ef856788d4acc",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.16+commit.07a7930e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_borrowerOperations\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_hintHelpers\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"HarvestaStaking__NotEnoughEther\",\"type\":\"error\"},{\"stateMutability\":\"payable\",\"type\":\"fallback\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_collEther\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_amountDebt\",\"type\":\"uint256\"}],\"name\":\"openTrove\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_collEther\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_amountDebt\",\"type\":\"uint256\"}],\"name\":\"openTroveWithHint\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/HarvestaStaking.sol\":\"HarvestaStaking\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/utils/math/SafeMath.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.6.0) (utils/math/SafeMath.sol)\\n\\npragma solidity ^0.8.0;\\n\\n// CAUTION\\n// This version of SafeMath should only be used with Solidity 0.8 or later,\\n// because it relies on the compiler's built in overflow checks.\\n\\n/**\\n * @dev Wrappers over Solidity's arithmetic operations.\\n *\\n * NOTE: `SafeMath` is generally not needed starting with Solidity 0.8, since the compiler\\n * now has built in overflow checking.\\n */\\nlibrary SafeMath {\\n    /**\\n     * @dev Returns the addition of two unsigned integers, with an overflow flag.\\n     *\\n     * _Available since v3.4._\\n     */\\n    function tryAdd(uint256 a, uint256 b) internal pure returns (bool, uint256) {\\n        unchecked {\\n            uint256 c = a + b;\\n            if (c < a) return (false, 0);\\n            return (true, c);\\n        }\\n    }\\n\\n    /**\\n     * @dev Returns the subtraction of two unsigned integers, with an overflow flag.\\n     *\\n     * _Available since v3.4._\\n     */\\n    function trySub(uint256 a, uint256 b) internal pure returns (bool, uint256) {\\n        unchecked {\\n            if (b > a) return (false, 0);\\n            return (true, a - b);\\n        }\\n    }\\n\\n    /**\\n     * @dev Returns the multiplication of two unsigned integers, with an overflow flag.\\n     *\\n     * _Available since v3.4._\\n     */\\n    function tryMul(uint256 a, uint256 b) internal pure returns (bool, uint256) {\\n        unchecked {\\n            // Gas optimization: this is cheaper than requiring 'a' not being zero, but the\\n            // benefit is lost if 'b' is also tested.\\n            // See: https://github.com/OpenZeppelin/openzeppelin-contracts/pull/522\\n            if (a == 0) return (true, 0);\\n            uint256 c = a * b;\\n            if (c / a != b) return (false, 0);\\n            return (true, c);\\n        }\\n    }\\n\\n    /**\\n     * @dev Returns the division of two unsigned integers, with a division by zero flag.\\n     *\\n     * _Available since v3.4._\\n     */\\n    function tryDiv(uint256 a, uint256 b) internal pure returns (bool, uint256) {\\n        unchecked {\\n            if (b == 0) return (false, 0);\\n            return (true, a / b);\\n        }\\n    }\\n\\n    /**\\n     * @dev Returns the remainder of dividing two unsigned integers, with a division by zero flag.\\n     *\\n     * _Available since v3.4._\\n     */\\n    function tryMod(uint256 a, uint256 b) internal pure returns (bool, uint256) {\\n        unchecked {\\n            if (b == 0) return (false, 0);\\n            return (true, a % b);\\n        }\\n    }\\n\\n    /**\\n     * @dev Returns the addition of two unsigned integers, reverting on\\n     * overflow.\\n     *\\n     * Counterpart to Solidity's `+` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - Addition cannot overflow.\\n     */\\n    function add(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a + b;\\n    }\\n\\n    /**\\n     * @dev Returns the subtraction of two unsigned integers, reverting on\\n     * overflow (when the result is negative).\\n     *\\n     * Counterpart to Solidity's `-` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - Subtraction cannot overflow.\\n     */\\n    function sub(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a - b;\\n    }\\n\\n    /**\\n     * @dev Returns the multiplication of two unsigned integers, reverting on\\n     * overflow.\\n     *\\n     * Counterpart to Solidity's `*` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - Multiplication cannot overflow.\\n     */\\n    function mul(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a * b;\\n    }\\n\\n    /**\\n     * @dev Returns the integer division of two unsigned integers, reverting on\\n     * division by zero. The result is rounded towards zero.\\n     *\\n     * Counterpart to Solidity's `/` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - The divisor cannot be zero.\\n     */\\n    function div(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a / b;\\n    }\\n\\n    /**\\n     * @dev Returns the remainder of dividing two unsigned integers. (unsigned integer modulo),\\n     * reverting when dividing by zero.\\n     *\\n     * Counterpart to Solidity's `%` operator. This function uses a `revert`\\n     * opcode (which leaves remaining gas untouched) while Solidity uses an\\n     * invalid opcode to revert (consuming all remaining gas).\\n     *\\n     * Requirements:\\n     *\\n     * - The divisor cannot be zero.\\n     */\\n    function mod(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a % b;\\n    }\\n\\n    /**\\n     * @dev Returns the subtraction of two unsigned integers, reverting with custom message on\\n     * overflow (when the result is negative).\\n     *\\n     * CAUTION: This function is deprecated because it requires allocating memory for the error\\n     * message unnecessarily. For custom revert reasons use {trySub}.\\n     *\\n     * Counterpart to Solidity's `-` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - Subtraction cannot overflow.\\n     */\\n    function sub(\\n        uint256 a,\\n        uint256 b,\\n        string memory errorMessage\\n    ) internal pure returns (uint256) {\\n        unchecked {\\n            require(b <= a, errorMessage);\\n            return a - b;\\n        }\\n    }\\n\\n    /**\\n     * @dev Returns the integer division of two unsigned integers, reverting with custom message on\\n     * division by zero. The result is rounded towards zero.\\n     *\\n     * Counterpart to Solidity's `/` operator. Note: this function uses a\\n     * `revert` opcode (which leaves remaining gas untouched) while Solidity\\n     * uses an invalid opcode to revert (consuming all remaining gas).\\n     *\\n     * Requirements:\\n     *\\n     * - The divisor cannot be zero.\\n     */\\n    function div(\\n        uint256 a,\\n        uint256 b,\\n        string memory errorMessage\\n    ) internal pure returns (uint256) {\\n        unchecked {\\n            require(b > 0, errorMessage);\\n            return a / b;\\n        }\\n    }\\n\\n    /**\\n     * @dev Returns the remainder of dividing two unsigned integers. (unsigned integer modulo),\\n     * reverting with custom message when dividing by zero.\\n     *\\n     * CAUTION: This function is deprecated because it requires allocating memory for the error\\n     * message unnecessarily. For custom revert reasons use {tryMod}.\\n     *\\n     * Counterpart to Solidity's `%` operator. This function uses a `revert`\\n     * opcode (which leaves remaining gas untouched) while Solidity uses an\\n     * invalid opcode to revert (consuming all remaining gas).\\n     *\\n     * Requirements:\\n     *\\n     * - The divisor cannot be zero.\\n     */\\n    function mod(\\n        uint256 a,\\n        uint256 b,\\n        string memory errorMessage\\n    ) internal pure returns (uint256) {\\n        unchecked {\\n            require(b > 0, errorMessage);\\n            return a % b;\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0x0f633a0223d9a1dcccfcf38a64c9de0874dfcbfac0c6941ccf074d63a2ce0e1e\",\"license\":\"MIT\"},\"contracts/HarvestaStaking.sol\":{\"content\":\"// SPDX-License-Identifier: UNLICENSED\\npragma solidity ^0.8.9;\\n\\nimport \\\"@openzeppelin/contracts/utils/math/SafeMath.sol\\\";\\n\\nimport \\\"./defifranc/interfaces/IBorrowerOperations.sol\\\";\\n\\n// Uncomment this line to use console.log\\n// import \\\"hardhat/console.sol\\\";\\n\\nerror HarvestaStaking__NotEnoughEther();\\n\\ncontract HarvestaStaking {\\n    using SafeMath for uint256;\\n\\n    /* ====== DEFIFRANC ADDRESSES ====== */\\n\\n    address private immutable borrowerOperations;\\n    address private immutable hintHelpers;\\n\\n    // Function to receive Ether. msg.data must be empty\\n    receive() external payable {}\\n\\n    // Fallback function is called when msg.data is not empty\\n    fallback() external payable {}\\n\\n    constructor(address _borrowerOperations, address _hintHelpers) {\\n        borrowerOperations = _borrowerOperations;\\n\\n        hintHelpers = _hintHelpers;\\n    }\\n\\n    function openTroveWithHint(\\n        address _asset,\\n        uint256 _collEther,\\n        uint256 _amountDebt\\n    ) external {}\\n\\n    function openTrove(\\n        address _asset,\\n        uint256 _collEther,\\n        uint256 _amountDebt\\n    ) external {\\n        uint256 _maxFee = 5e16;\\n\\n        _openTrove(\\n            _asset,\\n            _maxFee,\\n            _amountDebt,\\n            _collEther,\\n            address(this),\\n            address(this)\\n        );\\n    }\\n\\n    function _openTrove(\\n        address _asset,\\n        uint256 _maxFee,\\n        uint256 _amountDebt,\\n        uint256 _collEther,\\n        address _upperHint,\\n        address _lowerHint\\n    ) internal {\\n        if (_collEther > getBalance()) {\\n            revert HarvestaStaking__NotEnoughEther();\\n        }\\n        IBorrowerOperations(borrowerOperations).openTrove{value: _collEther}(\\n            _asset,\\n            _collEther,\\n            _maxFee,\\n            _amountDebt,\\n            _upperHint,\\n            _lowerHint\\n        );\\n    }\\n\\n    function getBalance() internal view returns (uint256) {\\n        return address(this).balance;\\n    }\\n}\\n\",\"keccak256\":\"0x1ac330753b1c0fdb08adfc39ad12ec094aa4344a77a8b691cdfd4f5029722477\",\"license\":\"UNLICENSED\"},\"contracts/defifranc/interfaces/IBorrowerOperations.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\n\\r\\npragma solidity ^0.8.14;\\r\\n\\r\\n// Common interface for the Trove Manager.\\r\\ninterface IBorrowerOperations {\\r\\n    // --- Events ---\\r\\n\\r\\n    event TroveManagerAddressChanged(address _newTroveManagerAddress);\\r\\n    event StabilityPoolAddressChanged(address _stabilityPoolAddress);\\r\\n    event GasPoolAddressChanged(address _gasPoolAddress);\\r\\n    event CollSurplusPoolAddressChanged(address _collSurplusPoolAddress);\\r\\n    event SortedTrovesAddressChanged(address _sortedTrovesAddress);\\r\\n    event DCHFTokenAddressChanged(address _dchfTokenAddress);\\r\\n    event MONStakingAddressChanged(address _MONStakingAddress);\\r\\n\\r\\n    event TroveCreated(\\r\\n        address indexed _asset,\\r\\n        address indexed _borrower,\\r\\n        uint256 arrayIndex\\r\\n    );\\r\\n    event TroveUpdated(\\r\\n        address indexed _asset,\\r\\n        address indexed _borrower,\\r\\n        uint256 _debt,\\r\\n        uint256 _coll,\\r\\n        uint256 stake,\\r\\n        uint8 operation\\r\\n    );\\r\\n    event DCHFBorrowingFeePaid(\\r\\n        address indexed _asset,\\r\\n        address indexed _borrower,\\r\\n        uint256 _DCHFFee\\r\\n    );\\r\\n\\r\\n    // --- Functions ---\\r\\n\\r\\n    function setAddresses(\\r\\n        address _troveManagerAddress,\\r\\n        address _troveManagerHelpersAddress,\\r\\n        address _stabilityPoolAddress,\\r\\n        address _gasPoolAddress,\\r\\n        address _collSurplusPoolAddress,\\r\\n        address _sortedTrovesAddress,\\r\\n        address _dchfTokenAddress,\\r\\n        address _MONStakingAddress,\\r\\n        address _dfrancParamsAddress\\r\\n    ) external;\\r\\n\\r\\n    function openTrove(\\r\\n        address _asset,\\r\\n        uint256 _tokenAmount,\\r\\n        uint256 _maxFee,\\r\\n        uint256 _DCHFamount,\\r\\n        address _upperHint,\\r\\n        address _lowerHint\\r\\n    ) external payable;\\r\\n\\r\\n    function addColl(\\r\\n        address _asset,\\r\\n        uint256 _assetSent,\\r\\n        address _upperHint,\\r\\n        address _lowerHint\\r\\n    ) external payable;\\r\\n\\r\\n    function moveETHGainToTrove(\\r\\n        address _asset,\\r\\n        uint256 _amountMoved,\\r\\n        address _user,\\r\\n        address _upperHint,\\r\\n        address _lowerHint\\r\\n    ) external payable;\\r\\n\\r\\n    function withdrawColl(\\r\\n        address _asset,\\r\\n        uint256 _amount,\\r\\n        address _upperHint,\\r\\n        address _lowerHint\\r\\n    ) external;\\r\\n\\r\\n    function withdrawDCHF(\\r\\n        address _asset,\\r\\n        uint256 _maxFee,\\r\\n        uint256 _amount,\\r\\n        address _upperHint,\\r\\n        address _lowerHint\\r\\n    ) external;\\r\\n\\r\\n    function repayDCHF(\\r\\n        address _asset,\\r\\n        uint256 _amount,\\r\\n        address _upperHint,\\r\\n        address _lowerHint\\r\\n    ) external;\\r\\n\\r\\n    function closeTrove(address _asset) external;\\r\\n\\r\\n    function adjustTrove(\\r\\n        address _asset,\\r\\n        uint256 _assetSent,\\r\\n        uint256 _maxFee,\\r\\n        uint256 _collWithdrawal,\\r\\n        uint256 _debtChange,\\r\\n        bool isDebtIncrease,\\r\\n        address _upperHint,\\r\\n        address _lowerHint\\r\\n    ) external payable;\\r\\n\\r\\n    function claimCollateral(address _asset) external;\\r\\n\\r\\n    function getCompositeDebt(address _asset, uint256 _debt)\\r\\n        external\\r\\n        view\\r\\n        returns (uint256);\\r\\n\\r\\n    function isContractBorrowerOps() external pure returns (bool);\\r\\n}\\r\\n\",\"keccak256\":\"0x48891437116abe60b0dc88c54d27aef436b2dd4abdfc2023fa5f7831da4b2635\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x60c060405234801561001057600080fd5b5060405161049a38038061049a83398181016040528101906100329190610104565b8173ffffffffffffffffffffffffffffffffffffffff1660808173ffffffffffffffffffffffffffffffffffffffff16815250508073ffffffffffffffffffffffffffffffffffffffff1660a08173ffffffffffffffffffffffffffffffffffffffff16815250505050610144565b600080fd5b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b60006100d1826100a6565b9050919050565b6100e1816100c6565b81146100ec57600080fd5b50565b6000815190506100fe816100d8565b92915050565b6000806040838503121561011b5761011a6100a1565b5b6000610129858286016100ef565b925050602061013a858286016100ef565b9150509250929050565b60805160a05161033561016560003960005050600060f001526103356000f3fe60806040526004361061002d5760003560e01c806348652829146100365780637d64b5c01461005f57610034565b3661003457005b005b34801561004257600080fd5b5061005d6004803603810190610058919061022d565b610088565b005b34801561006b57600080fd5b506100866004803603810190610081919061022d565b61008d565b005b505050565b600066b1a2bc2ec5000090506100a78482848630306100ad565b50505050565b6100b561018c565b8311156100ee576040517f019c195900000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b7f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff16637da0b1fa848886898988886040518863ffffffff1660e01b81526004016101529695949392919061029e565b6000604051808303818588803b15801561016b57600080fd5b505af115801561017f573d6000803e3d6000fd5b5050505050505050505050565b600047905090565b600080fd5b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b60006101c482610199565b9050919050565b6101d4816101b9565b81146101df57600080fd5b50565b6000813590506101f1816101cb565b92915050565b6000819050919050565b61020a816101f7565b811461021557600080fd5b50565b60008135905061022781610201565b92915050565b60008060006060848603121561024657610245610194565b5b6000610254868287016101e2565b935050602061026586828701610218565b925050604061027686828701610218565b9150509250925092565b610289816101b9565b82525050565b610298816101f7565b82525050565b600060c0820190506102b36000830189610280565b6102c0602083018861028f565b6102cd604083018761028f565b6102da606083018661028f565b6102e76080830185610280565b6102f460a0830184610280565b97965050505050505056fea2646970667358221220586bf3d4770cdde3b8cd901bb785bb99d1244b27baa8784c4a8fdd3e36d8d54f64736f6c63430008100033",
+  "deployedBytecode": "0x60806040526004361061002d5760003560e01c806348652829146100365780637d64b5c01461005f57610034565b3661003457005b005b34801561004257600080fd5b5061005d6004803603810190610058919061022d565b610088565b005b34801561006b57600080fd5b506100866004803603810190610081919061022d565b61008d565b005b505050565b600066b1a2bc2ec5000090506100a78482848630306100ad565b50505050565b6100b561018c565b8311156100ee576040517f019c195900000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b7f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff16637da0b1fa848886898988886040518863ffffffff1660e01b81526004016101529695949392919061029e565b6000604051808303818588803b15801561016b57600080fd5b505af115801561017f573d6000803e3d6000fd5b5050505050505050505050565b600047905090565b600080fd5b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b60006101c482610199565b9050919050565b6101d4816101b9565b81146101df57600080fd5b50565b6000813590506101f1816101cb565b92915050565b6000819050919050565b61020a816101f7565b811461021557600080fd5b50565b60008135905061022781610201565b92915050565b60008060006060848603121561024657610245610194565b5b6000610254868287016101e2565b935050602061026586828701610218565b925050604061027686828701610218565b9150509250925092565b610289816101b9565b82525050565b610298816101f7565b82525050565b600060c0820190506102b36000830189610280565b6102c0602083018861028f565b6102cd604083018761028f565b6102da606083018661028f565b6102e76080830185610280565b6102f460a0830184610280565b97965050505050505056fea2646970667358221220586bf3d4770cdde3b8cd901bb785bb99d1244b27baa8784c4a8fdd3e36d8d54f64736f6c63430008100033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}
