@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "./defifranc/interfaces/IBorrowerOperations.sol";
 import "./defifranc/interfaces/ITroveManagerHelpers.sol";
 import "./defifranc/interfaces/IHintHelpers.sol";
+import "./defifranc/interfaces/IDCHFToken.sol";
 
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";
@@ -13,6 +14,7 @@ import "./defifranc/interfaces/IHintHelpers.sol";
 error HarvestaStaking__NotEnoughEther();
 error HarvestaStaking__TroveIsActive();
 error HarvestaStaking__TroveIsNotActive();
+error HarvestaStaking__SenderIsNotYieldManager();
 
 contract HarvestaStaking {
     using SafeMath for uint256;
@@ -24,6 +26,8 @@ contract HarvestaStaking {
     ITroveManagerHelpers public troveManagerHelper;
 
     /* ====== State Variables ====== */
+
+    address private yieldManagerAddress;
 
     mapping(address => uint256) private totalStakedAssets;
 
@@ -41,6 +45,13 @@ contract HarvestaStaking {
         bool _active = troveManagerHelper.isTroveActive(_asset, address(this));
         if (!_active) {
             revert HarvestaStaking__TroveIsNotActive();
+        }
+        _;
+    }
+
+    modifier isYieldManager() {
+        if (msg.sender != yieldManagerAddress) {
+            revert HarvestaStaking__SenderIsNotYieldManager();
         }
         _;
     }
@@ -69,7 +80,7 @@ contract HarvestaStaking {
         uint256 _amountDebt
     ) external hasNoTrove(_asset) {}
 
-    function adjustTroveWithHint() external {}
+    function adjustTroveWithHint() external isYieldManager {}
 
     function openTrove(
         address _asset,
