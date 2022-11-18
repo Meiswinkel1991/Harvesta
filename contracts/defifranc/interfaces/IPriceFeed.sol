@@ -42,5 +42,5 @@ interface IPriceFeed {
 
     function fetchPrice(address _token) external returns (uint256);
 
-    function getDirectPrice(address _asset) external returns (uint256);
+    function getDirectPrice(address _asset) external view returns (uint256);
 }

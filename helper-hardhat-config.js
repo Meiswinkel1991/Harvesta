@@ -42,6 +42,7 @@ const networkConfig = {
     StabilityPoolETH: "0x6a9f9d6F5D672a9784c5E560a9648de6cbe2c548",
     StabilityPoolBTC: "0x04556d845f12Ff7D8Ff04a37F40387Dd1B454c4b",
     multiTroveGetter: "0xD4EcC372E99daBDbc0faBE02d2515a24388fACcA",
+    DCHFWhale: "0x9CBF099ff424979439dFBa03F00B5961784c06ce",
   },
 };
 
