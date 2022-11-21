@@ -11,12 +11,12 @@ import "./defifranc/interfaces/IDCHFToken.sol";
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";
 
-error HarvestaStaking__NotEnoughEther();
-error HarvestaStaking__TroveIsActive();
-error HarvestaStaking__TroveIsNotActive();
-error HarvestaStaking__SenderIsNotYieldManager();
+error HarvestaStakingPool__NotEnoughEther();
+error HarvestaStakingPool__TroveIsActive();
+error HarvestaStakingPool__TroveIsNotActive();
+error HarvestaStakingPool__SenderIsNotYieldManager();
 
-contract HarvestaStaking {
+contract HarvestaStakingPool {
     using SafeMath for uint256;
 
     /* ====== DEFIFRANC Contracts ====== */
@@ -24,6 +24,7 @@ contract HarvestaStaking {
     IBorrowerOperations public borrowerOperations;
     IHintHelpers public hintHelpers;
     ITroveManagerHelpers public troveManagerHelper;
+    IDCHFToken public DCHFToken;
 
     /* ====== State Variables ====== */
 
@@ -36,7 +37,7 @@ contract HarvestaStaking {
     modifier hasNoTrove(address _asset) {
         bool _active = troveManagerHelper.isTroveActive(_asset, address(this));
         if (_active) {
-            revert HarvestaStaking__TroveIsActive();
+            revert HarvestaStakingPool__TroveIsActive();
         }
         _;
     }
@@ -44,14 +45,14 @@ contract HarvestaStaking {
     modifier isTroveActive(address _asset) {
         bool _active = troveManagerHelper.isTroveActive(_asset, address(this));
         if (!_active) {
-            revert HarvestaStaking__TroveIsNotActive();
+            revert HarvestaStakingPool__TroveIsNotActive();
         }
         _;
     }
 
     modifier isYieldManager() {
         if (msg.sender != yieldManagerAddress) {
-            revert HarvestaStaking__SenderIsNotYieldManager();
+            revert HarvestaStakingPool__SenderIsNotYieldManager();
         }
         _;
     }
@@ -65,13 +66,16 @@ contract HarvestaStaking {
     constructor(
         address _borrowerOperations,
         address _hintHelpers,
-        address _troveManagerHelpers
+        address _troveManagerHelpers,
+        address _DCHFTokenAddress
     ) {
         borrowerOperations = IBorrowerOperations(_borrowerOperations);
 
         hintHelpers = IHintHelpers(_hintHelpers);
 
         troveManagerHelper = ITroveManagerHelpers(_troveManagerHelpers);
+
+        DCHFToken = IDCHFToken(_DCHFTokenAddress);
     }
 
     function openTroveWithHint(
@@ -79,8 +83,6 @@ contract HarvestaStaking {
         uint256 _collEther,
         uint256 _amountDebt
     ) external hasNoTrove(_asset) {}
-
-    function adjustTroveWithHint() external isYieldManager {}
 
     function openTrove(
         address _asset,
@@ -99,6 +101,8 @@ contract HarvestaStaking {
         );
     }
 
+    /* ====== Internal Functions ====== */
+
     function _openTrove(
         address _asset,
         uint256 _maxFee,
@@ -108,7 +112,7 @@ contract HarvestaStaking {
         address _lowerHint
     ) internal {
         if (_collEther > getBalance()) {
-            revert HarvestaStaking__NotEnoughEther();
+            revert HarvestaStakingPool__NotEnoughEther();
         }
         if (_asset == address(0)) {
             borrowerOperations.openTrove{value: _collEther}(
@@ -120,18 +124,13 @@ contract HarvestaStaking {
                 _lowerHint
             );
         }
+
+        uint256 _balanceDCHF = DCHFToken.balanceOf(address(this));
+
+        DCHFToken.transfer(yieldManagerAddress, _balanceDCHF);
     }
 
-    function adjustTrove(
-        address _asset,
-        uint256 _assetSent,
-        uint256 _maxFee,
-        uint256 _collWithdrawal,
-        uint256 _debtChange,
-        bool isDebtIncrease,
-        address _upperHint,
-        address _lowerHint
-    ) internal {}
+    /* ====== Pure / View Functions ====== */
 
     function getBalance() internal view returns (uint256) {
         return address(this).balance;

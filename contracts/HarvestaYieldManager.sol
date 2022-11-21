@@ -6,7 +6,7 @@ import "./defifranc/interfaces/IStabilityPoolManager.sol";
 import "./defifranc/interfaces/IDCHFToken.sol";
 import "./defifranc/interfaces/IPriceFeed.sol";
 import "./defifranc/interfaces/IMONStaking.sol";
-import "./HarvestaStaking.sol";
+import "./HarvestaStakingPool.sol";
 import "@openzeppelin/contracts/utils/math/SafeCast.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
@@ -61,6 +61,10 @@ contract HarvestaYieldManager {
     /* ====== Main Functions ====== */
 
     /* ====== Internal Functions ====== */
+
+    function _checkForTroveAdjustment() internal view returns (bool) {
+        uint256 _price = fetchAssetPrice(address(0));
+    }
 
     function _stakeMONTokens(uint256 _amount) internal {}
 
