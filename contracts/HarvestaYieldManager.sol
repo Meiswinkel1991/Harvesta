@@ -6,33 +6,19 @@ import "./defifranc/interfaces/IStabilityPoolManager.sol";
 import "./defifranc/interfaces/IDCHFToken.sol";
 import "./defifranc/interfaces/IPriceFeed.sol";
 import "./defifranc/interfaces/IMONStaking.sol";
-import "./HarvestaStakingPool.sol";
-import "@openzeppelin/contracts/utils/math/SafeCast.sol";
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "./StakingPool.sol";
 
 error HarvestaYieldManager__AmountExceedDepositedAmount();
 
 contract HarvestaYieldManager {
-    using SafeCast for int;
-    using SafeCast for uint256;
-    using SafeMath for uint256;
-
     /* ====== DEFIFRANC CONTRACTS ====== */
     IDCHFToken public DCHFToken;
     IPriceFeed public priceFeed;
     IStabilityPoolManager public stabilityPoolManager;
 
     /* ====== State Variables ====== */
-    uint256 private reservePool;
-    uint256 private rewardPool;
-
-    mapping(address => IStabilityPool) private stabilityPoolAddresses;
-
-    uint256 private checkPoint;
-    uint256 private executionDuration;
 
     /* ====== Events ====== */
-    event UpdateDCHFDeposit(uint256 totalDeposit, uint256 amountSent);
 
     // Function to receive Ether. msg.data must be empty
     receive() external payable {}
@@ -51,45 +37,11 @@ contract HarvestaYieldManager {
         );
 
         priceFeed = IPriceFeed(_priceFeedAddress);
-
-        //implement the priceFeed and stabilityPool for Ether
-        address zeroAddress = address(0);
-        stabilityPoolAddresses[zeroAddress] = stabilityPoolManager
-            .getAssetStabilityPool(address(0));
     }
 
     /* ====== Main Functions ====== */
 
     /* ====== Internal Functions ====== */
-
-    function _checkForTroveAdjustment() internal view returns (bool) {
-        uint256 _price = fetchAssetPrice(address(0));
-    }
-
-    function _stakeMONTokens(uint256 _amount) internal {}
-
-    function _unstakeMONTokens(uint256 _amount) internal {}
-
-    function _transferAvailableTokensToStabilityPool(address _asset) public {
-        uint256 _balance = DCHFToken.balanceOf(address(this));
-
-        IStabilityPool pool = stabilityPoolAddresses[_asset];
-
-        pool.provideToSP(_balance);
-    }
-
-    function withdrawTokensFromStabilityPool(address _asset, uint256 _amount)
-        internal
-    {
-        uint256 _depositedTokens = stabilityPoolAddresses[_asset]
-            .getCompoundedDCHFDeposit(address(this));
-
-        if (_amount > _depositedTokens) {
-            revert HarvestaYieldManager__AmountExceedDepositedAmount();
-        }
-
-        stabilityPoolAddresses[_asset].withdrawFromSP(_amount);
-    }
 
     /* ====== View / Pure Functions ====== */
 
